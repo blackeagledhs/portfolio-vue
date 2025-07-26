@@ -42,7 +42,7 @@ const isHomePage = computed(() => route.path === '/')
 
 /* Ajuste de contenido cuando hay topbar */
 .content-wrap.with-topbar {
-  padding-top: 70px; 
+  padding-top: 70px;
 }
 
 /* Contenedor de contenido principal */
@@ -65,7 +65,7 @@ const isHomePage = computed(() => route.path === '/')
     padding-bottom: 20px;
   }
   .content-wrap.with-topbar {
-    padding-top: 50px;
+    padding-top: 90px;
   }
   .footer {
     position: relative;
