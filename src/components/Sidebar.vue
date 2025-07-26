@@ -57,8 +57,9 @@ function closeSidebar() {
 }
 
 function downloadCV() {
+    const baseUrl = import.meta.env.BASE_URL;
     const link = document.createElement('a')
-    link.href = '/cv/Mauro_Vicens_CV.pdf'
+    link.href = `${baseUrl}cv/Mauro_Vicens_CV.pdf`
     link.setAttribute('download', 'CV-Mauro-Andres-Vicens.pdf')
     link.setAttribute('target', '_blank')
     document.body.appendChild(link)

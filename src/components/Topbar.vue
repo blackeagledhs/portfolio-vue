@@ -34,6 +34,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
 
+const baseUrl = import.meta.env.BASE_URL;
 const isMenuOpen = ref(false);
 
 // Configuración completa de navegación
@@ -45,7 +46,7 @@ const navItems = [
   { path: '/extras', text: 'Extras' },
   { path: '/contact', text: 'Contacto' },
   {
-    path: '/cv/Mauro_Vicens_CV.pdf',
+    path: `${baseUrl}cv/Mauro_Vicens_CV.pdf`,
     text: 'Descargar CV',
     download: true
   }
