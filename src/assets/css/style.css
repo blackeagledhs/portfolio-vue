@@ -131,6 +131,10 @@ transition-delay: 0s;
 }
 
 @media screen and (max-width: 768px) {
+
+main {
+    padding-top: 90px; /* o el alto total del topbar al abrir el menú */
+ }
 .profile {
 grid-template-columns: 1fr;
 gap: 10px;
