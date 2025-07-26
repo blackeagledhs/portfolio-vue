@@ -61,8 +61,8 @@ padding-bottom: 20px;
  }
 .content-wrap.with-topbar {
 padding-top: 90px !important; /* ✅ Forzado para móvil */
-margin-top: 0 !important;
- }
+margin-top: 0;
+}
 .footer {
 position: relative;
  }

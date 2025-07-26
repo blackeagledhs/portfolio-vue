@@ -60,22 +60,28 @@ const closeMenu = () => {
 };
 
 // Función para aplicar el padding-top al body
-const adjustPadding = () => {
+const updateBodyPadding = () => {
   const topbar = document.querySelector('.topbar');
-  const main = document.querySelector('main');
-  if (topbar && main) {
-    const height = topbar.offsetHeight;
-    main.style.paddingTop = `${height}px`;
+  if (topbar) {
+    const topbarHeight = topbar.offsetHeight;
+    document.body.style.paddingTop = `${topbarHeight}px`;
   }
 };
 
 onMounted(() => {
- adjustPadding();
-  window.addEventListener('resize', adjustPadding);
+  // Aplicar padding inicial
+  updateBodyPadding();
+
+  // Actualizar padding cuando cambie el tamaño de ventana
+  window.addEventListener('resize', updateBodyPadding);
 });
 
-onBeforeUnmount(() => {
-  window.removeEventListener('resize', adjustPadding);
+onUnmounted(() => {
+  // Limpiar el event listener
+  window.removeEventListener('resize', updateBodyPadding);
+
+  // Opcional: remover el padding del body
+  document.body.style.paddingTop = '';
 });
 </script>
 
