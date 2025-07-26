@@ -32,7 +32,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 
 const isMenuOpen = ref(false);
 
@@ -45,7 +45,7 @@ const navItems = [
   { path: '/extras', text: 'Extras' },
   { path: '/contact', text: 'Contacto' },
   {
-    path: '/cv/Mauro_Vicens_CV.pdf', 
+    path: '/cv/Mauro_Vicens_CV.pdf',
     text: 'Descargar CV',
     download: true
   }
@@ -58,6 +58,31 @@ const toggleMenu = () => {
 const closeMenu = () => {
   isMenuOpen.value = false;
 };
+
+// Función para aplicar el padding-top al body
+const updateBodyPadding = () => {
+  const topbar = document.querySelector('.topbar');
+  if (topbar) {
+    const topbarHeight = topbar.offsetHeight;
+    document.body.style.paddingTop = `${topbarHeight}px`;
+  }
+};
+
+onMounted(() => {
+  // Aplicar padding inicial
+  updateBodyPadding();
+
+  // Actualizar padding cuando cambie el tamaño de ventana
+  window.addEventListener('resize', updateBodyPadding);
+});
+
+onUnmounted(() => {
+  // Limpiar el event listener
+  window.removeEventListener('resize', updateBodyPadding);
+
+  // Opcional: remover el padding del body
+  document.body.style.paddingTop = '';
+});
 </script>
 
 <style scoped>
@@ -71,6 +96,8 @@ const closeMenu = () => {
   background: linear-gradient(87deg, #333, #414040, #ff6600);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   padding: 15px 0;
+  /* Altura mínima para cálculos consistentes */
+  min-height: 70px;
 }
 
 .topbar-container {
@@ -153,24 +180,27 @@ const closeMenu = () => {
 
 /* Estilos para móvil */
 @media (max-width: 768px) {
-
   .topbar-container {
     padding-right: 20px;
   }
+
   .topbar {
-    height: 70px;
+    min-height: 70px;
+    padding: 10px 0;
   }
 
   .topbar nav ul {
     flex-direction: column;
     align-items: flex-start;
-    padding: 60px 0 20px;
+    padding: 80px 0 20px; /* Más padding superior para evitar solapamiento */
     display: none;
     position: absolute;
     top: 0;
     left: 0;
     background: linear-gradient(87deg, #333, #414040, #ff6600);
     width: 100%;
+    /* Altura mínima para el menú desplegable */
+    min-height: 100vh;
   }
 
   .topbar nav ul.active {
@@ -186,9 +216,10 @@ const closeMenu = () => {
   .topbar nav ul li:last-child {
     margin-right: 0;
   }
+
   .topbar nav ul li a {
     font-size: 16px;
-    padding: 10px 20px;
+    padding: 15px 20px; /* Más padding para mejor usabilidad táctil */
     border: 1px solid #ff6600;
     margin-left: 8px;
     transform: skew(0);
@@ -213,7 +244,7 @@ const closeMenu = () => {
     width: 30px;
     height: 30px;
     position: absolute;
-    top: 15px;
+    top: 20px; /* Centrado mejor en móvil */
     right: 20px;
     z-index: 1001;
   }
@@ -236,6 +267,13 @@ const closeMenu = () => {
 
   .hamburger.active div:nth-child(3) {
     transform: rotate(-45deg) translate(5px, -5px);
+  }
+}
+
+/* Hamburger oculto en desktop */
+@media (min-width: 769px) {
+  .hamburger {
+    display: none;
   }
 }
 </style>
