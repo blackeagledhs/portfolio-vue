@@ -46,7 +46,7 @@ const navItems = [
   { path: '/extras', text: 'Extras' },
   { path: '/contact', text: 'Contacto' },
   {
-    path: `${baseUrl}cv/Mauro_Vicens_CV.pdf`,
+    path: `${baseUrl}cv/CV-Mauro-A-Vicens.pdf`,
     text: 'Descargar CV',
     download: true
   }
