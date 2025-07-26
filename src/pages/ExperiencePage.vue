@@ -157,6 +157,7 @@ body {
     .experience-section {
         grid-template-columns: 1fr; /* Una sola columna en móviles */
         max-width: 100%;
+        padding-top: 20px;
     }
 
     .experience-card {

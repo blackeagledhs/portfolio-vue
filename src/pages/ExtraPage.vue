@@ -224,6 +224,9 @@ main {
 
 /* Media query para pantallas pequeñas */
 @media (max-width: 768px) {
+    .extra-section {
+        padding-top: 20px;
+    }
     .extra-card {
         flex-direction: column;
     }

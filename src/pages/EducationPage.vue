@@ -147,6 +147,7 @@ padding: 0.75rem 0.25rem;
 main {
 padding: 1rem 0.5rem;
 min-height: calc(100vh - 60px);
+margin-top: 20px;
 }
 
 .titles {
