@@ -185,7 +185,7 @@ onUnmounted(() => {
   }
 
   .topbar {
-    min-height: 70px;
+    min-height: 50px;
     padding: 10px 0;
   }
 
