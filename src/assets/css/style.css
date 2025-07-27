@@ -131,9 +131,12 @@ transition-delay: 0s;
 }
 
 @media screen and (max-width: 768px) {
-
+.responsive-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
 main {
-    padding-top: 90px; /* o el alto total del topbar al abrir el menú */
+    padding-top: 70px;
  }
 .profile {
 grid-template-columns: 1fr;
@@ -150,7 +153,7 @@ font-size: 1em;
  }
 .profile, .badges {
 width: 90%;
-margin: 10px auto; /* ✅ Centrado con auto */
+margin: 10px auto;
 padding: 15px;
  }
 .badges img:hover {

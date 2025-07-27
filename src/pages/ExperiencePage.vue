@@ -1,9 +1,7 @@
 <template>
   <div>
-    <!-- Aquí incluirías tu componente topbar si lo tienes -->
-    <!-- <Topbar /> -->
 
-    <main>
+    <main class="responsive-container">
       <section class="experience-section">
         <div
           v-for="experience in experiences"
@@ -23,8 +21,6 @@
       </section>
     </main>
 
-    <!-- Aquí incluirías tu componente footer si lo tienes -->
-    <!-- <Footer /> -->
   </div>
 </template>
 
@@ -32,12 +28,12 @@
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
 
-// Estado reactivo para las experiencias
+
 const experiences = ref([])
 const loading = ref(true)
 const error = ref(null)
 
-// Función para obtener las experiencias desde la API usando Axios
+
 const fetchExperiences = async () => {
   try {
     loading.value = true
@@ -48,30 +44,30 @@ const fetchExperiences = async () => {
   } catch (err) {
     error.value = err.response?.data?.message || err.message || 'Error al cargar experiencias'
     console.error('Error fetching experience:', err)
-    experiences.value = [] // Array vacío en caso de error
+    experiences.value = []
   } finally {
     loading.value = false
   }
 }
 
-// Ejecutar al montar el componente
+
 onMounted(() => {
   fetchExperiences()
 })
 
-// Opcional: función para recargar datos
+
 const reloadExperiences = () => {
   fetchExperiences()
 }
 
-// Exponer funciones si necesitas usarlas desde el componente padre
+
 defineExpose({
   reloadExperiences
 })
 </script>
 
 <style scoped>
-/* Estilos exactos del CSS original mantenidos */
+
 body {
     font-family: Arial, sans-serif;
 }
@@ -79,13 +75,13 @@ body {
 .experience-section {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    max-width: 1200px; /* Controla el ancho máximo para 3 columnas */
+    max-width: 1200px;
     margin: 0 auto;
     gap: 16px;
     padding: 16px;
 }
 
-/* Media query para asegurar máximo 3 columnas */
+
 @media (min-width: 1200px) {
     .experience-section {
         grid-template-columns: repeat(3, 1fr);
@@ -97,21 +93,21 @@ body {
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 0;  /* Remove padding from card itself to control it within elements */
+    padding: 0;
     width: 100%;
-    min-width: 300px; /* Ancho mínimo para mantener legibilidad */
+    min-width: 300px;
 }
 
 .experience-header {
-    background-color: #666666;  /* Dark grey */
-    color: #ffffff;  /* White text */
+    background-color: #666666;
+    color: #ffffff;
     padding: 16px;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    min-height: 80px; /* Altura mínima uniforme */
+    min-height: 80px;
 }
 
 .experience-header h2,
@@ -143,19 +139,19 @@ body {
     color: #555;
     margin-top: 8px;
     margin-bottom: 8px;
-    padding: 0 16px;  /* Ensure alignment with card padding */
+    padding: 0 16px;
 }
 
 .description {
     font-size: 1em;
     color: #333;
-    padding: 0 16px 16px;  /* Ensure alignment with card padding */
+    padding: 0 16px 16px;
 }
 
 /* Estilos responsivos */
 @media (max-width: 768px) {
     .experience-section {
-        grid-template-columns: 1fr; /* Una sola columna en móviles */
+        grid-template-columns: 1fr;
         max-width: 100%;
         padding-top: 20px;
     }
@@ -177,11 +173,11 @@ body {
 
 @media (min-width: 769px) and (max-width: 1199px) {
     .experience-section {
-        grid-template-columns: repeat(2, 1fr); /* Dos columnas en tablets */
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* Estilos adicionales para estados de carga y error (opcional) */
+
 .loading {
     text-align: center;
     padding: 2rem;

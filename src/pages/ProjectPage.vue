@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="responsive-container">
     <section class="projects-section">
       <!-- Slider para desktop -->
       <div class="slider-container">

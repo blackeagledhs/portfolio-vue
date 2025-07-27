@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <!-- Topbar component - asumiendo que ya tienes un componente equivalente -->
-    <!-- <Topbar /> -->
+  <div class="responsive-container">
 
     <div class="contact-container">
       <div class="form-container">

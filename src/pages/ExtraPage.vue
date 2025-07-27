@@ -1,10 +1,7 @@
 <template>
   <div>
-    <!-- Topbar component (necesitarás importarlo según tu estructura) -->
-    <!-- <Topbar /> -->
 
-    <main>
-      <!-- Sección Extra -->
+    <main class="responsive-container">
       <section class="extra-section">
         <div class="extra-card">
           <div
@@ -16,19 +13,16 @@
             <span class="activity">{{ extra.activity }}</span>
           </div>
 
-          <!-- Mensaje si no hay datos -->
           <div v-if="extras.length === 0 && !loadingExtras" class="no-data">
             No hay datos extras disponibles
           </div>
 
-          <!-- Loading para extras -->
           <div v-if="loadingExtras" class="loading">
             Cargando extras...
           </div>
         </div>
       </section>
 
-      <!-- Sección Others -->
       <section class="other-section">
         <div
           v-for="other in others"
@@ -44,34 +38,29 @@
           <p class="institute-year">{{ other.institute }} - {{ other.year }}</p>
         </div>
 
-        <!-- Mensaje si no hay datos -->
         <div v-if="others.length === 0 && !loadingOthers" class="no-data">
           No hay otros datos disponibles
         </div>
 
-        <!-- Loading para others -->
         <div v-if="loadingOthers" class="loading">
           Cargando otros datos...
         </div>
       </section>
     </main>
-
-    <!-- Footer component (necesitarás importarlo según tu estructura) -->
-    <!-- <Footer /> -->
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
 
-// Estados reactivos
+
 const extras = ref([])
 const others = ref([])
 const loadingExtras = ref(false)
 const loadingOthers = ref(false)
 const error = ref(null)
 
-// Función para obtener los datos de extras
+
 const fetchExtras = async () => {
   try {
     loadingExtras.value = true
@@ -93,7 +82,7 @@ const fetchExtras = async () => {
   }
 }
 
-// Función para obtener los datos de others
+
 const fetchOthers = async () => {
   try {
     loadingOthers.value = true
@@ -115,14 +104,14 @@ const fetchOthers = async () => {
   }
 }
 
-// Función para manejar errores de imágenes
+
 const handleImageError = (event) => {
   console.error('Error loading image:', event.target.src)
   // Opcionalmente puedes asignar una imagen por defecto
   // event.target.src = '/path/to/default-image.jpg'
 }
 
-// Cargar datos al montar el componente
+
 onMounted(async () => {
   await Promise.all([
     fetchExtras(),
@@ -140,7 +129,7 @@ main {
     padding: 20px;
 }
 
-/* Sección Extra */
+
 .extra-section {
     max-width: 1024px;
     display: flex;
@@ -174,7 +163,7 @@ main {
     text-align: left;
 }
 
-/* Sección Other */
+
 .other-section {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -207,7 +196,7 @@ main {
     margin-top: 5px;
 }
 
-/* Estados de carga y error */
+
 .loading {
     text-align: center;
     padding: 20px;

@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="responsive-container">
 
     <section class="profile" v-if="about">
       <div class="profile__avatar">
@@ -32,7 +32,7 @@ const about = ref(null)
 const badges = ref([])
 
 onMounted(async () => {
-  console.log('Mounted Indexpage.vue') // Ver si monta 1 sola vez
+  //console.log('Mounted Indexpage.vue')
   try {
     const resAbout = await axios.get('https://portfolio-blackeagle.fly.dev/api/about/')
     console.log('About API response:', resAbout.data)
